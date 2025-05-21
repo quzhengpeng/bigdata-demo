@@ -9,6 +9,7 @@ Thumbs.db
 
 # IntelliJ project files
 .idea/
+target/
 *.iml
 
 # Visual Studio Code setting files
