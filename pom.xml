@@ -9,11 +9,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <scala.binary.version>2.12</scala.binary.version>
         <scala.version>2.12.20</scala.version>
+        <hadoop.version>3.3.6</hadoop.version>
+        <hive.version>2.3.9</hive.version>
         <kafka.version>3.9.0</kafka.version>
         <flink.version>1.20.1</flink.version>
         <log4j.version>2.24.3</log4j.version>
@@ -37,6 +39,22 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
+        </dependency>
+
+        <!-- hadoop dependencies. -->
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
+        <!-- hvie dependencies. -->
+        <!-- https://mvnrepository.com/artifact/org.apache.hive/hive-exec -->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-exec</artifactId>
+            <version>${hive.version}</version>
         </dependency>
 
         <!-- Apache Flink dependencies -->
@@ -108,6 +126,14 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
