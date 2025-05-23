@@ -14,11 +14,11 @@ object FlinkKafkaSourceDemo {
     env.setParallelism(1)
 
     val brokers = "localhost:9092";
-    val topic = "flink_kafka_source_demo"
-    val GROUP_ID = "GROUP_FlinkKafkaSourceDemo"
+    val topic = "flink_kafka_test"
+    val GROUP_ID = "GROUP_FlinkKafkaDemo"
 
     // 从 kafka 读取数据
-    val kafkaSourceBuild = KafkaSource.builder()
+    val kafkaSourceBuilder = KafkaSource.builder()
       .setBootstrapServers(brokers)
       .setGroupId(GROUP_ID)
       .setTopics(topic)
@@ -27,8 +27,8 @@ object FlinkKafkaSourceDemo {
       .setValueOnlyDeserializer(new SimpleStringSchema())
       .build()
 
-    val kafkaSource = env.fromSource(kafkaSourceBuild, WatermarkStrategy.noWatermarks(), "KafkaSource")
-      .map(_.trim)
+    val kafkaSource = env.fromSource(kafkaSourceBuilder, WatermarkStrategy.noWatermarks(), "KafkaSource")
+      .map(_.trim.substring(22))
       .filter(_ != "")
       .flatMap(_.split("\\s"))
       .map((_, 1))
